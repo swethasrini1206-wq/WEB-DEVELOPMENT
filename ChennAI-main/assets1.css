@@ -1,0 +1,142 @@
+/* assets.css */
+
+/* --- Color palette --- */
+/* #12212E (dark navy), #307082 (teal), #6CA3A2 (light teal), #ECE7DC (cream), #EA9940 (orange) */
+:root{
+  --navy: #12212E;
+  --teal-1: #307082;
+  --teal-2: #6CA3A2;
+  --cream: #ECE7DC;
+  --accent: #EA9940;
+  --glass-bg: rgba(255,255,255,0.85);
+}
+
+/* body layout */
+body{
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--cream);
+  color: var(--navy);
+}
+
+/* container */
+.container {
+  max-width: 1100px;
+}
+
+/* header */
+h3 {
+  color: var(--navy);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+/* tabs area - big rounded card with subtle shadow */
+.tab-card {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(18,33,46,0.12);
+  position: relative;
+}
+
+/* map and tab content heights */
+#map, #map-crowd, #map-food, #map-hotel {
+  width: 100%;
+  min-height: 340px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+/* tabs with custom colors */
+.nav-tabs .nav-link {
+  color: var(--navy);
+  font-weight: 600;
+  transition: all 300ms ease;
+}
+.nav-tabs .nav-link.active {
+  background: linear-gradient(90deg,var(--teal-1),var(--teal-2));
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(48,112,130,0.18);
+}
+
+/* tab-pane content padding and overlay */
+.tab-pane-inner {
+  padding: 18px;
+  position: relative;
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: opacity 450ms ease, transform 420ms ease;
+}
+
+/* background images per tab with overlay so inputs remain readable */
+.tab-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(4px) brightness(0.62);
+  transform: scale(1.03);
+  z-index: 0;
+}
+
+/* dark translucent overlay for better contrast */
+.tab-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18,33,46,0.25), rgba(18,33,46,0.25));
+  z-index: 1;
+}
+
+/* content foreground */
+.tab-foreground {
+  position: relative;
+  z-index: 2;
+}
+
+/* input fields: bold, clear */
+input.form-control, select.form-control {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--navy);
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(18,33,46,0.08);
+  box-shadow: 0 6px 18px rgba(18,33,46,0.04);
+}
+
+/* buttons */
+.btn-primary {
+  background: var(--teal-1);
+  border: none;
+}
+.btn-outline-primary {
+  color: var(--teal-1);
+  border-color: var(--teal-1);
+}
+
+/* cards for results */
+.result-card {
+  background: rgba(255,255,255,0.92);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 6px 18px rgba(18,33,46,0.04);
+}
+
+/* nice badge color */
+.badge-accent {
+  background: var(--accent);
+  color: white;
+}
+
+/* responsive */
+@media (max-width: 767px) {
+  #map, #map-crowd, #map-food, #map-hotel { min-height: 260px; }
+}
+
+/* --- Background images (Unsplash royalty-free) --- */
+.bg-overview { background-image: url('https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=0c0b6d0a6dbb8f9a8a6b1e0b8b2b0eae'); }
+.bg-crowd { background-image: url('https://images.unsplash.com/photo-1558980664-10d9809a3f5f?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=9d8a9ad24c5b0a3c3b0b9a8f3db9b6db'); }
+.bg-food { background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=f2f4c9e3a8e0d1c6f7b4a4e6b5a3f6ab'); }
+.bg-hotel { background-image: url('https://images.unsplash.com/photo-1501117716987-c8e1ecb1d4d6?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=7f345d8c6c7e1d4f6e9a5a8e6b1b3f2d'); }
+
+/* ensure the tab-card uses background images via container classes (see index.php) */
